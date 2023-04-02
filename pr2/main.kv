@@ -1,0 +1,489 @@
+<MD3Card>
+    padding: 4
+    size_hint: None, None
+    size: "200dp", "100dp"
+
+    MDRelativeLayout:
+
+        MDIconButton:
+            icon: "dots-vertical"
+            pos_hint: {"top": 1, "right": 1}
+
+        MDLabel:
+            id: label
+            text: root.text
+            adaptive_size: True
+            color: "grey"
+            pos: "12dp", "12dp"
+            bold: True
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+WindowManager:
+    MainWindow:
+    LoginWindow:
+    SignupWindow:
+    ProfileWindow:
+    HomeWindow:
+
+
+<MainWindow>:
+    name: "main"
+    MDScreen:
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        Image:
+            source: ""
+            pos_hint: {"center_x": .18, "center_y": .95}
+        Image:
+            source: ""
+            pos_hint: {"center_x": .5, "center_y": .65}
+        MDLabel:
+            text: "H E L L O"
+            font_name: "BPoppins"
+            font_size: "23sp"
+            pos_hint: {"center_y": .38}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        MDLabel:
+            text: "Welcome to Fitness App please sign in"
+            font_name: "MPoppins"
+            font_size: "13sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .3}
+            halign: "center"
+            color: rgba(127, 127, 127, 255)
+        MDRaisedButton:
+            text: "LOGIN"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = "home"
+        MDRaisedButton:
+            text: "SIGNUP"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .09}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = "signup"
+
+
+
+<LoginWindow>:
+    name: "login"
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        MDIconButton:
+            icon: "icon/run.png"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        MDLabel:
+            text: "W e l c o m e !"
+            font_name: "BPoppins"
+            font_size: "26sp"
+            pos_hint: {"center_x": .6,"center_y": .85}
+            color: rgba(0, 0, 59, 255)
+        MDLabel:
+            text: "Sign In to continue..."
+            font_name: "MPoppins"
+            font_size: "13sp"
+            pos_hint: {"center_x": .6, "center_y": .79}
+            color: rgba(135, 133, 193, 255)
+        MDFloatLayout:
+            size_hint: .7, .09
+            pos_hint: {"center_y": .6, "center_x": .50}
+            TextInput:
+                id: email1
+                hint_text: "Email"
+                font_name: "MPoppins"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43,"center_y": .5}
+                background_color: 1, 1, 1, 0
+                forground_color: rgba(0, 0, 59, 255)
+                cursor_color: rgba(0, 0, 59, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDFloatLayout:
+            size_hint: .7, .09
+            pos_hint: {"center_y": .5, "center_x": .5}
+            TextInput:
+                id: password1
+                hint_text: "Password"
+                font_name: "MPoppins"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43,"center_y": .5}
+                background_color: 1, 1, 1, 0
+                forground_color: rgba(0, 0, 59, 255)
+                cursor_color: rgba(0, 0, 59, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+                password: True
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .02
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDRaisedButton:
+            text: "Log In"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .36}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+            on_release:
+                app.verify_data(email1.text, password1.text)
+        MDTextButton:
+            text: "Forget Password"
+            pos_hint: {"center_x": .5, "center_y": .29}
+            color: rgba(68, 78, 132, 255)
+            font_size: "12sp"
+            font_name: "BPoppins"
+        MDLabel:
+            text: "or"
+            pos_hint: {"center_y": .22}
+            color: rgba(52, 0, 231, 255)
+            font_size: "13sp"
+            font_name: "BPoppins"
+            halign: "center"
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            pos_hint: {"center_x": .3, "center_y": .21}
+            size_hint: .3, .002
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            pos_hint: {"center_x": .7, "center_y": .21}
+            size_hint: .3, .002
+        MDLabel:
+            text: "Social Media Login"
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign: "center"
+            pos_hint: {"center_y": .16}
+            color: rgba(135, 133, 193, 255)
+        MDGridLayout:
+            cols: 3
+            size_hint: .48, .07
+            pos_hint: {"center_x": .5, "center_y": .1}
+            Image:
+                source: ""
+            Image:
+                source: ""
+            Image:
+                source: ""
+        MDLabel
+            text: "Don't have an account?"
+            font_name: "BPoppins"
+            font_size: "11sp"
+            pos_hint: {"center_x": .68, "center_y": .04}
+            color: rgba(135, 133, 193, 255)
+        MDTextButton
+            text: "Sign up"
+            font_name: "BPoppins"
+            font_size: "11sp"
+            pos_hint: {"center_x": .78, "center_y": .04}
+            color: rgba(52, 0, 231, 255)
+            on_release:
+                app.root.current = "signup"
+                root.manager.transition.direction = "right"
+
+
+
+
+<SignupWindow>:
+    name: "signup"
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        MDIconButton:
+            icon: "icon/run.png"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        MDLabel:
+            text: "H i !"
+            font_name: "BPoppins"
+            font_size: "26sp"
+            pos_hint: {"center_x": .6,"center_y": .85}
+            color: rgba(0, 0, 59, 255)
+        MDLabel:
+            text: "Create a new account..."
+            font_name: "MPoppins"
+            font_size: "13sp"
+            pos_hint: {"center_x": .6, "center_y": .79}
+            color: rgba(135, 133, 193, 255)
+        MDFloatLayout:
+            size_hint: .7, .09
+            pos_hint: {"center_y": .7, "center_x": .56}
+            TextInput:
+                id: username
+                hint_text: "Username"
+                font_name: "MPoppins"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43,"center_y": .5}
+                background_color: 1, 1, 1, 0
+                forground_color: rgba(0, 0, 59, 255)
+                cursor_color: rgba(0, 0, 59, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDFloatLayout:
+            size_hint: .7, .09
+            pos_hint: {"center_y": .6, "center_x": .56}
+            TextInput:
+                id: email
+                hint_text: "Email"
+                font_name: "MPoppins"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43,"center_y": .5}
+                background_color: 1, 1, 1, 0
+                forground_color: rgba(0, 0, 59, 255)
+                cursor_color: rgba(0, 0, 59, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .03
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDFloatLayout:
+            size_hint: .7, .09
+            pos_hint: {"center_y": .5, "center_x": .56}
+            TextInput:
+                id: password
+                hint_text: "Password"
+                font_name: "MPoppins"
+                size_hint_y: .75
+                pos_hint: {"center_x": .43,"center_y": .5}
+                background_color: 1, 1, 1, 0
+                forground_color: rgba(0, 0, 59, 255)
+                cursor_color: rgba(0, 0, 59, 255)
+                font_size: "14sp"
+                cursor_width: "2sp"
+                multiline: False
+                password: True
+            MDFloatLayout:
+                pos_hint: {"center_x": .45, "center_y": 0}
+                size_hint_y: .02
+                md_bg_color: rgba(178, 178, 178, 255)
+        MDRaisedButton:
+            text: "Sign Up"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .36}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+            on_release:
+                app.send_data(username.text, email.text, password.text)
+        MDLabel:
+            text: "or"
+            pos_hint: {"center_y": .22}
+            color: rgba(52, 0, 231, 255)
+            font_size: "13sp"
+            font_name: "BPoppins"
+            halign: "center"
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            pos_hint: {"center_x": .3, "center_y": .21}
+            size_hint: .3, .002
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            pos_hint: {"center_x": .7, "center_y": .21}
+            size_hint: .3, .002
+        MDLabel:
+            text: "Social Media Sign Up"
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign: "center"
+            pos_hint: {"center_y": .16}
+            color: rgba(135, 133, 193, 255)
+        MDGridLayout:
+            cols: 3
+            size_hint: .48, .07
+            pos_hint: {"center_x": .5, "center_y": .1}
+            Image:
+                source: ""
+            Image:
+                source: ""
+            Image:
+                source: ""
+        MDLabel
+            text: "Already have an account?"
+            font_name: "BPoppins"
+            font_size: "11sp"
+            pos_hint: {"center_x": .68, "center_y": .04}
+            color: rgba(135, 133, 193, 255)
+        MDTextButton
+            text: "Login"
+            font_name: "BPoppins"
+            font_size: "11sp"
+            pos_hint: {"center_x": .78, "center_y": .04}
+            color: rgba(52, 0, 231, 255)
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "left"
+
+
+
+<ProfileWindow>:
+    name: "profile"
+    MDFloatLayout:
+        MDLabel
+            text: "Username :"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .65, "center_y": .70}
+            color: rgba(135, 133, 193, 255)
+        MDLabel
+            text: "MINHAj"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .95, "center_y": .70}
+            color: rgba(135, 133, 193, 255)
+        MDLabel
+            text: "Email :"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .65, "center_y": .65}
+            color: rgba(135, 133, 193, 255)
+        MDLabel
+            text: "minnu@gmail.com"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .95, "center_y": .65}
+            color: rgba(135, 133, 193, 255)
+        MDLabel
+            text: "Password :"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .65, "center_y": .60}
+            color: rgba(135, 133, 193, 255)
+        MDLabel
+            text: "123@as"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            pos_hint: {"center_x": .95, "center_y": .60}
+            color: rgba(135, 133, 193, 255)
+
+
+
+
+
+<HomeWindow>:
+    name: "home"
+    MDFloatLayout:
+
+        MDScreen:
+
+            MDBottomNavigation:
+                md_bg_color: rgba(178, 178, 178, 255)
+                selected_color_background: "blue"
+                text_color_active: "lightblue"
+                text_color_active: 0, 0, 0, 1
+
+                MDBottomNavigationItem:
+                    name: 'screen 1'
+                    text: 'Mail'
+                    icon: 'gmail'
+                    badge_icon: "numeric-10"
+
+                    MDScreen:
+                        MDBoxLayout:
+                            ids: box_1
+                            adaptive_size: True
+                            spacing: "56dp"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDBottomNavigationItem:
+                    name: 'screen 2'
+                    text: 'Twitter'
+                    icon: 'twitter'
+                    badge_icon: "numeric-5"
+
+                    MDLabel:
+                        text: 'Twitter'
+                        halign: 'center'
+
+                MDBottomNavigationItem:
+                    name: 'screen 3'
+                    text: 'LinkedIN'
+                    icon: 'linkedin'
+
+                    MDLabel:
+                        text: 'LinkedIN'
+                        halign: 'center'
+        MDScreen:
+
+            MDNavigationLayout:
+
+                MDScreenManager:
+
+                    MDScreen:
+
+                        MDTopAppBar:
+                            title: "Navigation Drawer"
+                            elevation: 4
+                            pos_hint: {"top": 1}
+                            md_bg_color: "#e7e4c0"
+                            specific_text_color: "#4a4939"
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+                MDNavigationDrawer:
+                    id: nav_drawer
+                    radius: (0, 16, 16, 0)
+
+                    MDNavigationDrawerMenu:
+
+                        MDNavigationDrawerHeader:
+                            title: "Header title"
+                            text: "Header text"
+                            spacing: "4dp"
+                            padding: "12dp", 0, 0, "56dp"
+                        MDNavigationDrawerItem
+                            text_color: "black"
+                            icon: "profile"
+                            text: "Profile"
+                            on_release:
+                                app.see_profile_data()
+                        MDNavigationDrawerItem
+                            text_color: "black"
+                            icon: "logout"
+                            text: "Logout"
+                            on_release:
+                                app.logout_data()
+
+

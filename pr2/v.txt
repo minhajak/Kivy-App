@@ -1,0 +1,16 @@
+https://www.youtube.com/watch?v=CYgAh_AA2Kg
+
+https://www.youtube.com/watch?v=q3ffWgsW6nk
+
+https://www.youtube.com/watch?v=A6QGLYhJW1w
+
+https://www.youtube.com/watch?v=gMab1BhRtSI&list=PLw3v-v8eZvaJTXgRx7hLTfXZB1aFmBvEp
+
+MDScreen:
+    name: "main"
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+        Image:
+            source: "icon/home.png"
+            pos_hint: {"center_x": .18, "center_y": .95}
+
